@@ -266,3 +266,74 @@ Durch die Weiterentwicklung unserer Website oder aufgrund gesetzlicher Vorgaben 
 </p>
 ``
 
+<h2 id="agb">Allgemeine Geschäftsbedingungen (AGB)</h2>
+
+<h3>1. Geltungsbereich</h3>
+<p>
+Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge, die zwischen
+Lina MaLio GbR und Verbrauchern über den Verkauf von Waren geschlossen werden.
+</p>
+
+<h3>2. Vertragspartner</h3>
+<p>
+Der Kaufvertrag kommt zustande mit:<br>
+Lina MaLio GbR<br>
+Bahnhofstraße 29<br>
+76744 Wörth am Rhein<br>
+Deutschland
+</p>
+
+<h3>3. Angebot und Vertragsschluss</h3>
+<p>
+Die Darstellung der Waren stellt kein rechtlich bindendes Angebot dar,
+sondern eine unverbindliche Aufforderung zur Abgabe einer Bestellung.
+Der Vertrag kommt zustande, wenn wir die Bestellung ausdrücklich bestätigen
+oder die Ware versenden.
+</p>
+
+<h3>4. Preise und Versandkosten</h3>
+<p>
+Alle angegebenen Preise sind Endpreise gemäß § 19 UStG (Kleinunternehmerregelung),
+zuzüglich ggf. anfallender Versandkosten, sofern diese nicht ausdrücklich
+anders ausgewiesen sind.
+</p>
+
+<h3>5. Lieferung</h3>
+<p>
+Die Lieferung erfolgt an die vom Kunden angegebene Lieferadresse.
+Angaben zu Lieferzeiten sind unverbindlich, sofern nicht ausdrücklich
+ein fester Liefertermin zugesagt wurde.
+</p>
+
+<h3>6. Zahlungsbedingungen</h3>
+<p>
+Die Zahlung erfolgt per den im jeweiligen Angebot angegebenen Zahlungsarten.
+Der Kaufpreis ist unmittelbar nach Vertragsschluss fällig.
+</p>
+
+<h3>7. Eigentumsvorbehalt</h3>
+<p>
+Die Ware bleibt bis zur vollständigen Zahlung unser Eigentum.
+</p>
+
+<h3>8. Gewährleistung</h3>
+<p>
+Es gelten die gesetzlichen Gewährleistungsrechte.
+Bei gebrauchten Waren kann die Gewährleistungsfrist auf ein Jahr verkürzt sein,
+sofern dies gesetzlich zulässig ist.
+</p>
+
+<h3>9. Haftung</h3>
+<p>
+Wir haften uneingeschränkt bei Vorsatz und grober Fahrlässigkeit.
+Bei leichter Fahrlässigkeit nur bei Verletzung wesentlicher Vertragspflichten.
+</p>
+
+<h3>10. Schlussbestimmungen</h3>
+<p>
+Es gilt das Recht der Bundesrepublik Deutschland.
+Sollten einzelne Bestimmungen dieser AGB unwirksam sein,
+bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.
+</p>
+``
+
