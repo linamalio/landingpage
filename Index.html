@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lina MaLio – Second Hand Mode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --brown-900: #2c1a0e;
+      --brown-800: #3e2512;
+      --brown-700: #5c3317;
+      --brown-600: #7a4520;
+      --brown-500: #9e5d2e;
+      --brown-400: #c07c4a;
+      --brown-300: #d9a87a;
+      --brown-200: #edd5b3;
+      --brown-100: #f7ece0;
+      --brown-50:  #fdf6ef;
+      --cream:     #faf5ee;
+      --text-dark: #2c1a0e;
+      --text-mid:  #5c3317;
+      --text-light: #9e7355;
+      --accent:    #c07c4a;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 245, 238, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--brown-200);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 2px solid var(--brown-200);
+    }
+
+    .logo-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-name span:first-child {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--brown-800);
+      letter-spacing: 0.01em;
+    }
+
+    .logo-name span:last-child {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--brown-400);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--brown-700); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--brown-700);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        inset: 70px 0 0 0;
+        background: var(--cream);
+        flex-direction: column;
+        gap: 0;
+        padding: 24px;
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+        border-top: 1px solid var(--brown-200);
+      }
+
+      .nav-links.open { transform: translateX(0); }
+
+      .nav-links li {
+        border-bottom: 1px solid var(--brown-100);
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 18px 0;
+        font-size: 1rem;
+      }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--brown-900);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 80% at 60% 50%, rgba(122,69,32,0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 60% at 20% 80%, rgba(192,124,74,0.2) 0%, transparent 60%),
+        var(--brown-900);
+    }
+
+    /* Subtle grain */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-text { animation: fadeUp 0.9s ease both; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(192,124,74,0.18);
+      border: 1px solid rgba(192,124,74,0.35);
+      color: var(--brown-300);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--brown-300); display: block; }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--brown-300);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 440px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 15px 34px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px rgba(192,124,74,0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--brown-500);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(192,124,74,0.45);
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 15px 34px;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: border-color 0.25s, color 0.25s;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.6);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .hero-logo-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeUp 0.9s 0.15s ease both;
+    }
+
+    .hero-logo-circle {
+      width: clamp(220px, 35vw, 360px);
+      height: clamp(220px, 35vw, 360px);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 80px rgba(192,124,74,0.15), inset 0 0 40px rgba(192,124,74,0.05);
+    }
+
+    .hero-logo-circle img {
+      width: 72%;
+      height: 72%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+        padding: 60px 24px;
+      }
+
+      .hero-logo-wrap { order: -1; }
+
+      .hero-logo-circle {
+        width: 200px;
+        height: 200px;
+      }
+
+      .hero-desc { max-width: 100%; }
+      .hero-cta { justify-content: center; }
+      .hero-badge { justify-content: center; }
+    }
+
+    /* ── FEATURES STRIP ── */
+    .features-strip {
+      background: var(--brown-800);
+      padding: 20px 24px;
+    }
+
+    .features-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .feature-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--brown-200);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .feature-chip .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brown-400);
+      flex-shrink: 0;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 90px 24px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--brown-900);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-light);
+      line-height: 1.85;
+      max-width: 560px;
+    }
+
+    /* ── ABOUT (2-col) ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card {
+      background: var(--brown-100);
+      border-radius: 12px;
+      padding: 48px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      right: 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 160px;
+      color: var(--brown-200);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .about-card p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--brown-700);
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .about-card .author {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 20px;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ── WHY US ── */
+    .why-section {
+      background: var(--brown-50);
+      padding: 90px 0;
+    }
+
+    .why-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+
+    .why-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 36px 28px;
+      border: 1px solid var(--brown-200);
+      transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+    }
+
+    .why-card:hover {
+      box-shadow: 0 12px 40px rgba(92,51,23,0.1);
+      transform: translateY(-4px);
+      border-color: var(--brown-300);
+    }
+
+    .why-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--brown-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .why-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--brown-800);
+      margin-bottom: 10px;
+    }
+
+    .why-card p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── OFFER ── */
+    .offer-pills {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+    }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: #fff;
+      border: 1px solid var(--brown-200);
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--brown-700);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .pill:hover {
+      background: var(--brown-800);
+      border-color: var(--brown-800);
+      color: #fff;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── CONTACT BANNER ── */
+    .contact-banner {
+      margin: 0 24px 90px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 90px;
+      background: var(--brown-800);
+      border-radius: 16px;
+      padding: 64px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-banner::before {
+      content: '';
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(192,124,74,0.12);
+    }
+
+    .contact-banner::after {
+      content: '';
+      position: absolute;
+      left: -30px;
+      bottom: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(192,124,74,0.08);
+    }
+
+    .contact-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .contact-text p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .contact-action {
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .contact-banner {
+        padding: 44px 28px;
+        margin: 0 16px 60px;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown-900);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .footer-top {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 60px 24px 48px;
+    }
+
+    .footer-top-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 60px;
+    }
+
+    .footer-brand .logo-name span:first-child { color: #fff; }
+    .footer-brand .logo-name span:last-child { color: var(--brown-400); }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 16px;
+      line-height: 1.7;
+      max-width: 260px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .footer-col a, .footer-col p {
+      display: block;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: var(--brown-300); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .footer-top-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+    }
+
+    .footer-legal {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .legal-section { margin-bottom: 56px; }
+
+    .legal-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .legal-section h3 {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brown-300);
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+
+    .legal-section p, .legal-section li {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.88rem;
+      line-height: 1.85;
+    }
+
+    .legal-section ul {
+      margin-left: 18px;
+      margin-bottom: 12px;
+    }
+
+    .legal-section li { margin-bottom: 6px; }
+
+    .legal-section a { color: var(--brown-300); }
+    .legal-section a:hover { color: #fff; text-decoration: none; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="Logo Lina Malio.png" alt="Lina MaLio Logo" />
+      <div class="logo-name">
+        <span>Lina MaLio</span>
+        <span>Second Hand Mode</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#angebot">Angebot</a></li>
+      <li><a href="#impressum">Impressum</a></li>
+      <li><a href="#datenschutz">Datenschutz</a></li>
+      <li><a href="#agb">AGB</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge"><span></span> Handverlesene Mode</div>
+      <h1>Mode mit<br /><em>Geschichte</em> &amp;<br />Charakter.</h1>
+      <p class="hero-desc">
+        Bei Lina MaLio findest du sorgfältig geprüfte Second-Hand-Mode zu fairen Preisen –
+        nachhaltig, einzigartig, liebevoll ausgewählt.
+      </p>
+      <div class="hero-cta">
+        <a href="#angebot" class="btn-primary">Kollektion entdecken</a>
+        <a href="#kontakt" class="btn-ghost">Kontakt aufnehmen</a>
+      </div>
+    </div>
+    <div class="hero-logo-wrap">
+      <div class="hero-logo-circle">
+        <img src="Logo Lina Malio.png" alt="Lina MaLio" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES STRIP ── -->
+<div class="features-strip">
+  <div class="features-inner">
+    <div class="feature-chip"><span class="dot"></span> Sorgfältige Qualitätsprüfung</div>
+    <div class="feature-chip"><span class="dot"></span> Nachhaltig &amp; ressourcenschonend</div>
+    <div class="feature-chip"><span class="dot"></span> Faire Preise</div>
+    <div class="feature-chip"><span class="dot"></span> Liebevoll verpackt</div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<div class="section">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <span class="section-label">Über uns</span>
+      <h2>Ein kleines Herzensprojekt mit großem Anspruch</h2>
+      <p class="section-body">
+        Lina MaLio ist mehr als ein Second-Hand-Shop – es ist unser Beitrag zu einer nachhaltigeren Modewelt.
+        Wir glauben daran, dass schöne Kleidung kein neues Etikett braucht. Jedes Stück wird von uns persönlich
+        ausgewählt, geprüft und mit Sorgfalt zu dir geschickt.
+      </p>
+    </div>
+    <div class="about-visual reveal">
+      <div class="about-card">
+        <p>
+          Schöne Kleidung braucht kein neues Etikett – nur den richtigen Menschen, der ihren Wert erkennt.
+          <span class="author">— Lina MaLio</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── WHY US ── -->
+<div class="why-section">
+  <div class="why-inner">
+    <span class="section-label">Unsere Stärken</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--brown-900);margin-bottom:0;">Warum Lina MaLio?</h2>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">🔍</div>
+        <h3>Qualitätsgeprüft</h3>
+        <p>Jedes Teil wird vor dem Verkauf sorgfältig auf Echtheit und Zustand geprüft.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🌿</div>
+        <h3>Nachhaltig</h3>
+        <p>Second Hand schont Ressourcen und verlängert den Lebensweg schöner Kleidung.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🏷️</div>
+        <h3>Faire Preise</h3>
+        <p>Hochwertige Mode muss nicht teuer sein – bei uns zahlst du einen ehrlichen Preis.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">📦</div>
+        <h3>Mit Liebe verpackt</h3>
+        <p>Deine Bestellung kommt sorgfältig und persönlich verpackt bei dir an.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── OFFER ── -->
+<div class="section" id="angebot">
+  <span class="section-label">Sortiment</span>
+  <h2>Unser Angebot</h2>
+  <p class="section-body">Aktuell findest du bei uns eine handverlesene Auswahl an:</p>
+  <div class="offer-pills">
+    <div class="pill"><span class="pill-dot"></span> Damenmode</div>
+    <div class="pill"><span class="pill-dot"></span> Accessoires</div>
+    <div class="pill"><span class="pill-dot"></span> Saisonale Einzelstücke</div>
+  </div>
+</div>
+
+<!-- ── CONTACT BANNER ── -->
+<div class="contact-banner" id="kontakt">
+  <div class="contact-text">
+    <h2>Neugierig geworden?</h2>
+    <p>Schreib uns – wir freuen uns über jede Nachricht.</p>
+  </div>
+  <div class="contact-action">
+    <a href="mailto:support@lina-malio.de" class="btn-primary">support@lina-malio.de</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-top-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <img src="Logo Lina Malio.png" alt="Lina MaLio" style="height:44px;border-radius:50%;border:2px solid rgba(255,255,255,0.15);" />
+          <div class="logo-name">
+            <span>Lina MaLio</span>
+            <span>Second Hand Mode</span>
+          </div>
+        </a>
+        <p>Handverlesene Second-Hand-Mode – nachhaltig, fair und mit Liebe ausgewählt.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="#angebot">Angebot</a>
+        <a href="#impressum">Impressum</a>
+        <a href="#datenschutz">Datenschutz</a>
+        <a href="#agb">AGB</a>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <a href="mailto:support@lina-malio.de">support@lina-malio.de</a>
+        <a href="https://www.lina-malio.de" target="_blank">www.lina-malio.de</a>
+        <p style="margin-top:8px;">Bahnhofstraße 29<br />76744 Wörth am Rhein</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-legal">
+
+    <!-- IMPRESSUM -->
+    <div class="legal-section" id="impressum">
+      <h2>Impressum</h2>
+      <h3>Angaben gemäß § 5 TMG</h3>
+      <p>Lina MaLio GbR<br />Bahnhofstraße 29<br />76744 Wörth am Rhein<br />Deutschland</p>
+      <h3>Kontakt</h3>
+      <p>E-Mail: <a href="mailto:support@lina-malio.de">support@lina-malio.de</a><br />Website: <a href="https://www.lina-malio.de" target="_blank">www.lina-malio.de</a></p>
+      <h3>Vertretungsberechtigung</h3>
+      <p>Selina Scherthan, Justin Scherthan</p>
+      <h3>Umsatzsteuer-Identifikationsnummer</h3>
+      <p>DE[beantragt]</p>
+      <h3>Verantwortlicher für den Inhalt (§ 55 Abs. 2 RStV)</h3>
+      <p>Justin Scherthan</p>
+      <h3>Haftungsausschluss</h3>
+      <p>Wir übernehmen keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+      <h3>Verpackungsgesetz – Systembeteiligung (§ 7 VerpackG)</h3>
+      <p>Lina MaLio GbR ist gemäß § 7 Abs. 1 des Verpackungsgesetzes verpflichtet, sich an einem dualen System zur Rücknahme und Verwertung von Verkaufsverpackungen zu beteiligen. Wir beteiligen uns über das duale System INTERSEROH+ GmbH am Rücknahmesystem.</p>
+      <h3>Hinweise zu Marken und Produktdarstellungen</h3>
+      <p>Alle genannten Marken- und Produktnamen sind Eigentum der jeweiligen Rechteinhaber. Die Nennung erfolgt ausschließlich zur Beschreibung der angebotenen Waren. Lina MaLio GbR steht in keiner wirtschaftlichen Verbindung zu den genannten Markenherstellern. Es handelt sich um den gewerblichen Handel mit gebrauchter Originalware.</p>
+      <h3>Echtheitsprüfung / Second-Hand-Hinweis</h3>
+      <p>Alle angebotenen Artikel werden vor dem Verkauf sorgfältig auf Echtheit und Zustand geprüft. Es handelt sich ausschließlich um gebrauchte Ware, sofern nicht ausdrücklich anders angegeben.</p>
+    </div>
+
+    <!-- DATENSCHUTZ -->
+    <div class="legal-section" id="datenschutz">
+      <h2>Datenschutzerklärung</h2>
+      <p>Wir freuen uns über Ihr Interesse an unserer Website. Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges Anliegen. Nachfolgend informieren wir Sie über die Verarbeitung personenbezogener Daten bei der Nutzung unserer Website gemäß der Datenschutz-Grundverordnung (DSGVO).</p>
+      <h3>1. Verantwortlicher</h3>
+      <p>Lina MaLio GbR<br />Bahnhofstraße 29<br />76744 Wörth am Rhein<br />Deutschland<br /><br />E-Mail: <a href="mailto:support@lina-malio.de">support@lina-malio.de</a></p>
+      <h3>2. Erhebung und Speicherung personenbezogener Daten</h3>
+      <p>Beim Aufrufen unserer Website werden durch den von Ihnen verwendeten Internet-Browser automatisch Informationen an den Server unserer Website gesendet. Diese Informationen werden temporär in einem sogenannten Logfile gespeichert.</p>
+      <p>Erfasst werden dabei insbesondere:</p>
+      <ul>
+        <li>IP-Adresse des anfragenden Gerätes</li>
+        <li>Datum und Uhrzeit des Zugriffs</li>
+        <li>Name und URL der abgerufenen Datei</li>
+        <li>Website, von der aus der Zugriff erfolgt (Referrer-URL)</li>
+        <li>Verwendeter Browser und ggf. das Betriebssystem Ihres Gerätes</li>
+      </ul>
+      <p>Die genannten Daten werden verarbeitet, um einen reibungslosen Verbindungsaufbau der Website zu gewährleisten sowie zur Systemsicherheit und -stabilität. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
+      <h3>3. Kontaktaufnahme per E-Mail</h3>
+      <p>Wenn Sie uns per E-Mail kontaktieren, werden die von Ihnen übermittelten personenbezogenen Daten (z. B. Name, E-Mail-Adresse, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage gespeichert und verwendet. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+      <h3>4. Weitergabe von Daten</h3>
+      <p>Eine Übermittlung Ihrer persönlichen Daten an Dritte findet nicht statt, außer:</p>
+      <ul>
+        <li>Sie haben Ihre ausdrückliche Einwilligung dazu erteilt</li>
+        <li>Die Weitergabe ist zur Erfüllung rechtlicher Verpflichtungen erforderlich</li>
+        <li>Die Weitergabe ist zur Abwicklung von Vertragsverhältnissen erforderlich</li>
+      </ul>
+      <h3>5. Cookies</h3>
+      <p>Unsere Website verwendet keine Cookies.</p>
+      <h3>6. Ihre Rechte als betroffene Person</h3>
+      <p>Sie haben das Recht:</p>
+      <ul>
+        <li>Auskunft über Ihre bei uns gespeicherten personenbezogenen Daten zu verlangen (Art. 15 DSGVO)</li>
+        <li>Berichtigung unrichtiger Daten zu verlangen (Art. 16 DSGVO)</li>
+        <li>Löschung Ihrer Daten zu verlangen (Art. 17 DSGVO)</li>
+        <li>Einschränkung der Verarbeitung zu verlangen (Art. 18 DSGVO)</li>
+        <li>Widerspruch gegen die Verarbeitung einzulegen (Art. 21 DSGVO)</li>
+        <li>Datenübertragbarkeit zu verlangen (Art. 20 DSGVO)</li>
+      </ul>
+      <p>Zudem haben Sie das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.</p>
+      <h3>7. Datensicherheit</h3>
+      <p>Wir verwenden geeignete technische und organisatorische Sicherheitsmaßnahmen, um Ihre Daten gegen zufällige oder vorsätzliche Manipulationen, teilweisen oder vollständigen Verlust sowie gegen den unbefugten Zugriff Dritter zu schützen.</p>
+      <h3>8. Aktualität und Änderung dieser Datenschutzerklärung</h3>
+      <p>Diese Datenschutzerklärung ist aktuell gültig (Stand: April 2026). Durch die Weiterentwicklung unserer Website oder aufgrund gesetzlicher Vorgaben kann eine Änderung dieser Datenschutzerklärung erforderlich werden.</p>
+    </div>
+
+    <!-- AGB -->
+    <div class="legal-section" id="agb">
+      <h2>Allgemeine Geschäftsbedingungen (AGB)</h2>
+      <h3>1. Geltungsbereich</h3>
+      <p>Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge, die zwischen Lina MaLio GbR und Verbrauchern über den Verkauf von Waren geschlossen werden.</p>
+      <h3>2. Vertragspartner</h3>
+      <p>Der Kaufvertrag kommt zustande mit:<br />Lina MaLio GbR<br />Bahnhofstraße 29<br />76744 Wörth am Rhein<br />Deutschland</p>
+      <h3>3. Angebot und Vertragsschluss</h3>
+      <p>Die Darstellung der Waren stellt kein rechtlich bindendes Angebot dar, sondern eine unverbindliche Aufforderung zur Abgabe einer Bestellung. Der Vertrag kommt zustande, wenn wir die Bestellung ausdrücklich bestätigen oder die Ware versenden.</p>
+      <h3>4. Preise und Versandkosten</h3>
+      <p>Alle angegebenen Preise sind Endpreise gemäß § 19 UStG (Kleinunternehmerregelung), zuzüglich ggf. anfallender Versandkosten, sofern diese nicht ausdrücklich anders ausgewiesen sind.</p>
+      <h3>5. Lieferung</h3>
+      <p>Die Lieferung erfolgt an die vom Kunden angegebene Lieferadresse. Angaben zu Lieferzeiten sind unverbindlich, sofern nicht ausdrücklich ein fester Liefertermin zugesagt wurde.</p>
+      <h3>6. Zahlungsbedingungen</h3>
+      <p>Die Zahlung erfolgt per den im jeweiligen Angebot angegebenen Zahlungsarten. Der Kaufpreis ist unmittelbar nach Vertragsschluss fällig.</p>
+      <h3>7. Eigentumsvorbehalt</h3>
+      <p>Die Ware bleibt bis zur vollständigen Zahlung unser Eigentum.</p>
+      <h3>8. Gewährleistung</h3>
+      <p>Es gelten die gesetzlichen Gewährleistungsrechte. Bei gebrauchten Waren kann die Gewährleistungsfrist auf ein Jahr verkürzt sein, sofern dies gesetzlich zulässig ist.</p>
+      <h3>9. Haftung</h3>
+      <p>Wir haften uneingeschränkt bei Vorsatz und grober Fahrlässigkeit. Bei leichter Fahrlässigkeit nur bei Verletzung wesentlicher Vertragspflichten.</p>
+      <h3>10. Schlussbestimmungen</h3>
+      <p>Es gilt das Recht der Bundesrepublik Deutschland. Sollten einzelne Bestimmungen dieser AGB unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt.</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Lina MaLio GbR · Bahnhofstraße 29 · 76744 Wörth am Rhein · <a href="mailto:support@lina-malio.de" style="color:inherit;">support@lina-malio.de</a>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  // Close nav on link click (mobile)
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
