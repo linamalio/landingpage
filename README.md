@@ -1,2 +1,33 @@
 # landingpage
 Landing Page für Webseite
+!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Kleingewerbe</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; }
+        nav { margin-bottom: 40px; }
+        section { margin-bottom: 60px; }
+        footer { font-size: 0.8em; border-top: 1px solid #ccc; padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Willkommen bei Lina MaLio</h1>
+    </header>
+   
+    <section>
+        <p>Bei uns gibt es geprüfte, handgepickte Second Hand Mode zu absoluten Bestpreisen.</p>
+    </section>
+
+    <footer>
+        <a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a>
+        <h2 id="impressum">Impressum</h2>
+        <p>Hier deine rechtlichen Texte einfügen...</p>
+        <h2 id="datenschutz">Datenschutz</h2>
+        <p>Hier deine Datenschutzerklärung einfügen...</p>
+    </footer>
+</body>
+</html>
