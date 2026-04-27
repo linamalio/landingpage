@@ -18,6 +18,77 @@
             background: linear-gradient(135deg, #f8fdf6 0%, #f0f9ed 100%);
         }
 
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(45, 106, 79, 0.15);
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo-text {
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #b7e4c7;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Container */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -31,6 +102,7 @@
             margin-bottom: 60px;
             border-radius: 0 0 12px 12px;
             box-shadow: 0 4px 6px rgba(45, 106, 79, 0.1);
+            text-align: center;
         }
 
         header h1 {
@@ -163,22 +235,6 @@
             color: white;
         }
 
-        .footer-nav {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .footer-nav a {
-            color: #b7e4c7;
-            font-weight: 600;
-        }
-
-        .footer-nav a:hover {
-            color: white;
-        }
-
         .divider {
             width: 100%;
             height: 1px;
@@ -186,7 +242,34 @@
             margin: 30px 0;
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
+                flex-direction: column;
+                gap: 0;
+                padding: 20px;
+                display: none;
+                box-shadow: 0 4px 8px rgba(45, 106, 79, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
             header {
                 padding: 40px 20px;
             }
@@ -207,21 +290,77 @@
                 padding: 20px;
             }
 
-            .footer-nav {
-                flex-direction: column;
-                gap: 10px;
+            .logo img {
+                height: 40px;
+            }
+
+            .logo-text {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 0;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            section {
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.95rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            .highlight {
+                padding: 15px;
+            }
+
+            footer {
+                padding: 20px;
             }
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <h1>Willkommen bei Lina MaLio</h1>
-            <p>Nachhaltige Second-Hand-Mode – geprüft, fair & stilvoll</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120'%3E%3Ctext x='50' y='80' font-size='60' font-weight='bold' fill='%23b8744d' font-family='serif'%3ELM%3C/text%3E%3C/svg%3E" alt="Lina MaLio Logo">
+                <span class="logo-text">Lina MaLio</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#angebot">Angebot</a></li>
+                <li><a href="#impressum">Impressum</a></li>
+                <li><a href="#datenschutz">Datenschutz</a></li>
+                <li><a href="#agb">AGB</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <div class="container">
         <!-- Kurzbeschreibung -->
@@ -253,7 +392,7 @@
         </section>
 
         <!-- Angebot -->
-        <section>
+        <section id="angebot">
             <h2>Unser Angebot</h2>
             <p>Aktuell findest du bei uns:</p>
             <ul>
@@ -264,7 +403,7 @@
         </section>
 
         <!-- Call to Action -->
-        <section class="highlight">
+        <section class="highlight" id="kontakt">
             <h2>Neugierig geworden?</h2>
             <p>Schau dich gerne um oder kontaktiere uns bei Fragen.</p>
             <a href="mailto:support@lina-malio.de" class="button">Kontakt aufnehmen</a>
@@ -273,12 +412,6 @@
 
     <footer>
         <div class="container">
-            <div class="footer-nav">
-                <a href="#impressum">Impressum</a>
-                <a href="#datenschutz">Datenschutz</a>
-                <a href="#agb">AGB</a>
-            </div>
-
             <div class="divider"></div>
 
             <!-- Impressum -->
@@ -492,5 +625,22 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
