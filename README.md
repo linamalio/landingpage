@@ -165,12 +165,104 @@
 
 <footer>
 
-    <h2 id="datenschutz">Datenschutz</h2>
-    <p>
-        Deine vollständige Datenschutzerklärung gemäß DSGVO bitte hier einfügen.
-    </p>
-</footer>
-``
+<h2 id="datenschutz">Datenschutzerklärung</h2>
 
+<p>
+Wir freuen uns über Ihr Interesse an unserer Website. Der Schutz Ihrer personenbezogenen
+Daten ist uns ein wichtiges Anliegen. Nachfolgend informieren wir Sie über die Verarbeitung
+personenbezogener Daten bei der Nutzung unserer Website gemäß der Datenschutz‑Grundverordnung (DSGVO).
+</p>
+
+<h3>1. Verantwortlicher</h3>
+<p>
+Lina MaLio GbR<br>
+Bahnhofstraße 29<br>
+76744 Wörth am Rhein<br>
+Deutschland<br><br>
+E-Mail: support@lina-malio.de
+</p>
+
+<h3>2. Erhebung und Speicherung personenbezogener Daten sowie Art und Zweck von deren Verwendung</h3>
+
+<p>
+Beim Aufrufen unserer Website werden durch den von Ihnen verwendeten Internet‑Browser automatisch
+Informationen an den Server unserer Website gesendet. Diese Informationen werden temporär in einem
+sogenannten Logfile gespeichert.
+</p>
+
+<p>Erfasst werden dabei insbesondere:</p>
+<ul>
+    <li>IP-Adresse des anfragenden Gerätes</li>
+    <li>Datum und Uhrzeit des Zugriffs</li>
+    <li>Name und URL der abgerufenen Datei</li>
+    <li>Website, von der aus der Zugriff erfolgt (Referrer-URL)</li>
+    <li>verwendeter Browser und ggf. das Betriebssystem Ihres Gerätes</li>
+</ul>
+
+<p>
+Die genannten Daten werden verarbeitet, um einen reibungslosen Verbindungsaufbau der Website
+zu gewährleisten sowie zur Systemsicherheit und -stabilität.
+</p>
+
+<p>
+Die Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 lit. f DSGVO.
+</p>
+
+<h3>3. Kontaktaufnahme per E-Mail</h3>
+<p>
+Wenn Sie uns per E-Mail kontaktieren, werden die von Ihnen übermittelten personenbezogenen Daten
+(z. B. Name, E-Mail-Adresse, Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage gespeichert
+und verwendet.
+</p>
+
+<p>
+Die Datenverarbeitung erfolgt gemäß Art. 6 Abs. 1 lit. b DSGVO.
+</p>
+
+<h3>4. Weitergabe von Daten</h3>
+<p>
+Eine Übermittlung Ihrer persönlichen Daten an Dritte findet nicht statt, außer:
+</p>
+<ul>
+    <li>Sie haben Ihre ausdrückliche Einwilligung dazu erteilt</li>
+    <li>die Weitergabe ist zur Erfüllung rechtlicher Verpflichtungen erforderlich</li>
+    <li>die Weitergabe ist zur Abwicklung von Vertragsverhältnissen erforderlich</li>
+</ul>
+
+<h3>5. Cookies</h3>
+<p>
+Unsere Website verwendet keine Cookies.
+</p>
+
+<h3>6. Ihre Rechte als betroffene Person</h3>
+<p>
+Sie haben das Recht:
+</p>
+<ul>
+    <li>Auskunft über Ihre bei uns gespeicherten personenbezogenen Daten zu verlangen (Art. 15 DSGVO)</li>
+    <li>Berichtigung unrichtiger Daten zu verlangen (Art. 16 DSGVO)</li>
+    <li>Löschung Ihrer Daten zu verlangen (Art. 17 DSGVO)</li>
+    <li>Einschränkung der Verarbeitung zu verlangen (Art. 18 DSGVO)</li>
+    <li>Widerspruch gegen die Verarbeitung einzulegen (Art. 21 DSGVO)</li>
+    <li>Datenübertragbarkeit zu verlangen (Art. 20 DSGVO)</li>
+</ul>
+
+<p>
+Zudem haben Sie das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.
+</p>
+
+<h3>7. Datensicherheit</h3>
+<p>
+Wir verwenden geeignete technische und organisatorische Sicherheitsmaßnahmen, um Ihre Daten
+gegen zufällige oder vorsätzliche Manipulationen, teilweisen oder vollständigen Verlust
+sowie gegen den unbefugten Zugriff Dritter zu schützen.
+</p>
+
+<h3>8. Aktualität und Änderung dieser Datenschutzerklärung</h3>
+<p>
+Diese Datenschutzerklärung ist aktuell gültig (Stand: April 2026).
+Durch die Weiterentwicklung unserer Website oder aufgrund gesetzlicher Vorgaben kann eine
+Änderung dieser Datenschutzerklärung erforderlich werden.
+</p>
 ``
 
