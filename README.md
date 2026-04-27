@@ -344,7 +344,7 @@
     <nav>
         <div class="nav-container">
             <div class="logo">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 120'%3E%3Ctext x='50' y='80' font-size='60' font-weight='bold' fill='%23b8744d' font-family='serif'%3ELM%3C/text%3E%3C/svg%3E" alt="Lina MaLio Logo">
+                <img src="Logo Lina Malio.png">
                 <span class="logo-text">Lina MaLio</span>
             </div>
             <ul class="nav-links" id="navLinks">
