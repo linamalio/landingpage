@@ -144,6 +144,22 @@
       transition: all 0.3s;
     }
 
+    /* ── MOBILE MENU READABILITY FIX ── */
+@media (max-width: 768px) {
+  .nav-links a {
+    color: var(--brown-900);   /* deutlich dunkler */
+    font-weight: 600;          /* besser lesbar */
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+
+  nav {
+    background: #faf5ee;       /* weniger Transparenz */
+  }
+}
+
     /* Mobile nav */
     @media (max-width: 768px) {
       .hamburger { display: flex; }
