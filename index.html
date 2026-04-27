@@ -803,6 +803,39 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* ── MOBILE MENU: LESBAR + PREMIUM ── */
+@media (max-width: 768px) {
+
+  nav {
+    background: #faf5ee;            /* komplett deckend */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .nav-links {
+    background: #faf5ee;            /* ruhiger Hintergrund */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  }
+
+  .nav-links a {
+    color: var(--brown-900);        /* sehr hoher Kontrast */
+    font-weight: 600;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--accent);
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid var(--brown-200);
+  }
+
+  .hamburger span {
+    background: var(--brown-900);
+  }
+}
+    
   </style>
 </head>
 <body>
