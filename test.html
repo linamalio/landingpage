@@ -1408,6 +1408,33 @@ nav {
       gap: 22px;
     }
 
+    /* ── SHOP: Mobile Zentrierung ── */
+@media (max-width: 768px) {
+  .shop-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .shop-header > div {
+    align-items: center;
+  }
+
+  .shop-subtitle {
+    max-width: 100%;
+  }
+
+  .shop-grid {
+    justify-items: center;
+  }
+
+  .product-card {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
     .product-card {
       background: #fff;
       border-radius: 16px;
