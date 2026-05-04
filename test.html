@@ -203,30 +203,33 @@
       .hamburger { display: flex; }
 
       /* Overlay: hidden by default, no blur ever */
+      
       #mobileMenuOverlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(30, 15, 5, 0.5);
-        z-index: 290;
-      }
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 15, 5, 0.5);
+      z-index: 299; /* ⬅️ UNTER dem Menü */
+    }
+
 
       /* Nav menu: completely hidden by default */
       .nav-links {
-        display: none;
-        position: fixed;
-        bottom: 0; left: 0; right: 0;
-        background: #ffffff;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 0;
-        padding: 0 0 24px;
-        border-radius: 24px 24px 0 0;
-        box-shadow: 0 -8px 40px rgba(30,15,5,0.18);
-        z-index: 300;
-        max-height: 85vh;
-        overflow-y: auto;
-      }
+      display: none;
+      position: fixed;
+      top: 68px; /* Höhe der Navbar */
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      flex-direction: column;
+      padding: 0 0 24px;
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 8px 40px rgba(30,15,5,0.18);
+      z-index: 300; /* ⬅️ ÜBER dem Overlay */
+      max-height: calc(100vh - 68px);
+      overflow-y: auto;
+    }
+
 
       /* Only shown when JS adds .menu-visible */
       .nav-links.menu-visible {
@@ -2281,6 +2284,20 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
+
+  const navLinks = document.getElementById('navLinks');
+
+navLinks.addEventListener('click', (event) => {
+  event.stopPropagation();
+});
+
+document.querySelectorAll('#navLinks a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('menu-visible');
+    document.getElementById('mobileMenuOverlay').classList.remove('menu-visible');
+    document.getElementById('hamburger').classList.remove('active');
+  });
+});
 
   // Mobile menu
   const hamburger = document.getElementById('hamburger');
