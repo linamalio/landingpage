@@ -2365,6 +2365,44 @@ document.querySelectorAll('#navLinks a').forEach(link => {
   window.addEventListener('load', revealOnScroll);
 })();
 </script>
+  <script>
+  // ✅ Mobile Menü – FUNKTIONIERENDE VERSION
+  (function () {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const overlay = document.getElementById('mobileMenuOverlay');
+
+    if (!hamburger || !navLinks || !overlay) return;
+
+    function openMenu() {
+      navLinks.classList.add('menu-visible');
+      overlay.classList.add('menu-visible');
+      hamburger.classList.add('active');
+    }
+
+    function closeMenu() {
+      navLinks.classList.remove('menu-visible');
+      overlay.classList.remove('menu-visible');
+      hamburger.classList.remove('active');
+    }
+
+    hamburger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (navLinks.classList.contains('menu-visible')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    overlay.addEventListener('click', closeMenu);
+
+    // Menü schließt nach Klick auf einen Link
+    document.querySelectorAll('#navLinks a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  })();
+</script>
 
 </body>
 </html>
