@@ -61,25 +61,19 @@ nav {
   right: 0;
   z-index: 200;
   height: 68px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  /* ✅ sorgt für jederzeit gute Sichtbarkeit */
-  background: rgba(250, 244, 232, 0.85);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  /* ✅ Stabile Sichtbarkeit */
+  background: rgba(250, 244, 232, 0.95); /* fast deckend */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
-  border-bottom: 1px solid rgba(90, 54, 32, 0.12);
+  border-bottom: 1px solid rgba(90, 54, 32, 0.14);
+  box-shadow: 0 4px 24px rgba(90, 54, 32, 0.12);
 }
-
-    nav.scrolled {
-      background: rgba(250,244,232,0.93);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 1px 0 rgba(90,54,32,0.12);
-    }
-
     .logo {
       display: flex;
       align-items: center;
