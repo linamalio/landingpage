@@ -211,13 +211,14 @@
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.35s ease;
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(2px);
+        /* NO backdrop-filter here – it causes persistent blur on iOS */
+        visibility: hidden;
       }
 
       #mobileMenuOverlay.open {
         opacity: 1;
         pointer-events: all;
+        visibility: visible;
       }
 
       /* White card that slides up from the bottom */
@@ -2296,6 +2297,8 @@
   const overlay    = document.getElementById('mobileMenuOverlay');
 
   let menuOpen = false;
+  let touchStartY = 0;
+  let touchStartX = 0;
 
   function openMenu() {
     menuOpen = true;
@@ -2311,15 +2314,36 @@
     hamburger.classList.remove('active');
   }
 
+  // Record touch start on hamburger
+  hamburger.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+
+  // Only toggle if finger barely moved (tap, not scroll)
+  hamburger.addEventListener('touchend', (e) => {
+    const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+    const dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
+    if (dy < 10 && dx < 10) {
+      e.preventDefault();
+      menuOpen ? closeMenu() : openMenu();
+    }
+  }, { passive: false });
+
+  // Desktop fallback (mouse click)
   hamburger.addEventListener('click', (e) => {
-    e.stopPropagation();
+    if (window.matchMedia('(pointer: coarse)').matches) return;
     menuOpen ? closeMenu() : openMenu();
   });
 
-  // Close on overlay click
+  // Close when tapping the dark overlay
+  overlay.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    closeMenu();
+  }, { passive: false });
   overlay.addEventListener('click', closeMenu);
 
-  // Close on link click
+  // Close on nav link tap/click
   navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
   // Close on Escape
