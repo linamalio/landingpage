@@ -475,6 +475,37 @@
       align-items: center;
     }
 
+    /* ── HERO IMAGE BANNER (FINAL) ── */
+.hero-visual-banner {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #000;
+  box-shadow:
+    0 40px 120px rgba(0,0,0,0.45),
+    0 0 80px rgba(217,168,118,0.25);
+  z-index: 2;
+}
+
+.hero-visual-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Radar-Effekt bleibt im Hintergrund */
+.hero-canvas {
+  z-index: 0;
+}
+
+.hero-inner {
+  z-index: 2;
+}
+
     .hero-orb {
       position: relative;
       width: clamp(240px, 36vw, 400px);
@@ -1846,10 +1877,13 @@
     </div>
 
     <!-- VISUAL -->
-    <div class="hero-visual">
-      <div class="hero-orb">
-        <div class="hero-orb-ring"></div>
-        <div class="hero-orb-ring-2"></div>
+    <div class="hero-visual hero-visual-banner">
+  <img
+    src="logo_banner.jpg"
+    alt="Lina MaLio – Live auf Whatnot"
+    loading="eager"
+  />
+</div>
 
         <!-- ✅ FINAL: Bild im Zentrum -->
         <div class="hero-orb-img hero-image">
