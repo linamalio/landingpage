@@ -2341,6 +2341,37 @@ document.querySelectorAll('#navLinks a').forEach(link => {
   });
 });
 
+<script>
+  // Hamburger Menu Toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+  // Toggle menu on hamburger click
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('menu-visible');
+    mobileMenuOverlay.classList.toggle('menu-visible');
+  });
+
+  // Close menu when overlay is clicked
+  mobileMenuOverlay.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('menu-visible');
+    mobileMenuOverlay.classList.remove('menu-visible');
+  });
+
+  // Close menu when a nav link is clicked
+  const navItems = navLinks.querySelectorAll('li');
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('menu-visible');
+      mobileMenuOverlay.classList.remove('menu-visible');
+    });
+  });
+</script>
+  
   // Mobile menu
   const hamburger = document.getElementById('hamburger');
   const navLinks   = document.getElementById('navLinks');
