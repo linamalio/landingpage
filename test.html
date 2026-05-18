@@ -2314,128 +2314,42 @@ nav {
 </footer>
 
 <script>
-  // Cursor glow
-  const glow = document.getElementById('cursor-glow');
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top  = e.clientY + 'px';
-  });
-
-  // Nav scroll – only changes nav background, never touches menu
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  const navLinks = document.getElementById('navLinks');
-
-navLinks.addEventListener('click', (event) => {
-  event.stopPropagation();
-});
-
-document.querySelectorAll('#navLinks a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('menu-visible');
-    document.getElementById('mobileMenuOverlay').classList.remove('menu-visible');
-    document.getElementById('hamburger').classList.remove('active');
-  });
-});
-
-<script>
-  // Hamburger Menu Toggle
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-
-  // Toggle menu on hamburger click
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('menu-visible');
-    mobileMenuOverlay.classList.toggle('menu-visible');
-  });
-
-  // Close menu when overlay is clicked
-  mobileMenuOverlay.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navLinks.classList.remove('menu-visible');
-    mobileMenuOverlay.classList.remove('menu-visible');
-  });
-
-  // Close menu when a nav link is clicked
-  const navItems = navLinks.querySelectorAll('li');
-  navItems.forEach(item => {
-    item.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navLinks.classList.remove('menu-visible');
-      mobileMenuOverlay.classList.remove('menu-visible');
-    });
-  });
-</script>
-  
-  // Mobile menu
   const hamburger = document.getElementById('hamburger');
-  const navLinks   = document.getElementById('navLinks');
-  const overlay    = document.getElementById('mobileMenuOverlay');
+  const navLinks = document.getElementById('navLinks');
+  const overlay = document.getElementById('mobileMenuOverlay');
 
   function openMenu() {
+    hamburger.classList.add('active');
     navLinks.classList.add('menu-visible');
     overlay.classList.add('menu-visible');
-    hamburger.classList.add('active');
   }
 
   function closeMenu() {
+    hamburger.classList.remove('active');
     navLinks.classList.remove('menu-visible');
     overlay.classList.remove('menu-visible');
-    hamburger.classList.remove('active');
   }
 
-  // Hamburger: one clean click handler only
-  hamburger.addEventListener('click', function(e) {
+  // Toggle Menü
+  hamburger.addEventListener('click', (e) => {
     e.stopPropagation();
-    navLinks.classList.contains('menu-visible') ? closeMenu() : openMenu();
+    navLinks.classList.contains('menu-visible')
+      ? closeMenu()
+      : openMenu();
   });
 
-  // Close on overlay click
+  // Overlay klicken = schließen
   overlay.addEventListener('click', closeMenu);
 
-  // Close on any nav link
-  navLinks.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', closeMenu);
+  // Link klicken = schließen
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
   });
 
-  // Close on Escape
-  document.addEventListener('keydown', function(e) {
+  // ESC = schließen
+  document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();
   });
-
-  // Scroll reveal
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
-
-<script>
-// Scroll-Reveal Fix: macht alle Inhalte sichtbar
-(function () {
-  const revealElements = document.querySelectorAll('.reveal');
-  function revealOnScroll() {
-    const triggerBottom = window.innerHeight * 0.85;
-    revealElements.forEach(el => {
-      const boxTop = el.getBoundingClientRect().top;
-      if (boxTop < triggerBottom) {
-        el.classList.add('visible');
-      }
-    });
-  }
-  window.addEventListener('scroll', revealOnScroll);
-  window.addEventListener('load', revealOnScroll);
-})();
 </script>
 
 </body>
